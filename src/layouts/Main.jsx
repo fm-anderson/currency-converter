@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function Main() {
   return (
@@ -8,6 +9,7 @@ function Main() {
       <main className="grid justify-items-center place-items-start">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 }
