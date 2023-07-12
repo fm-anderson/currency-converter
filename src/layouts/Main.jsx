@@ -1,9 +1,11 @@
 import { Outlet } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 function Main() {
   return (
-    <div className="grid justify-items-center px-6 py-10 mx-6 place-items-start bg-cyan-400">
-      <main>
+    <div>
+      <Navbar />
+      <main className="grid justify-items-center py-10 place-items-start bg-cyan-400">
         <h1>Main</h1>
         <Outlet />
       </main>
