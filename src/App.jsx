@@ -5,7 +5,7 @@ const router = createBrowserRouter(routesConfig);
 
 function App() {
   return (
-    <div className="grid container h-screen bg-cyan-200">
+    <div className="grid container h-screen bg-base-100">
       <RouterProvider router={router} />
     </div>
   );
