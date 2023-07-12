@@ -1,4 +1,6 @@
 import heroImage from '../images/currency-converter.png';
+
+//components
 import LoginForm from '../components/LoginForm';
 
 function Home() {
