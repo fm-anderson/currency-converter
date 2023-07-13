@@ -1,18 +1,4 @@
-import { redirect } from 'react-router-dom';
-import { deleteItem, fetchData } from './utils';
-
-export async function homeLoader() {
-  if (fetchData('userName')) {
-    return redirect('/dashboard');
-  }
-  return null;
-}
-
-export async function logoutLoader() {
-  deleteItem({ key: 'userName' });
-  return redirect('/');
-}
-
+//action functions
 export async function loginFormAction({ request }) {
   const data = await request.formData();
   const formData = Object.fromEntries(data);

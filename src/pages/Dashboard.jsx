@@ -1,3 +1,4 @@
+//components
 import CurrencyCard from '../components/CurrencyCard';
 import Favorites from '../components/Favorites';
 

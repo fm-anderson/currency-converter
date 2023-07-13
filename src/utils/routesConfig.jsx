@@ -1,9 +1,15 @@
 //components, loaders, and actions
-import Main, { mainLoader } from '../layouts/Main';
 import Error from '../pages/Error';
+import Main from '../layouts/Main';
 import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard';
-import { homeLoader, loginFormAction, logoutLoader } from './actions';
+import { loginFormAction } from './actions';
+import {
+  logoutLoader,
+  mainLoader,
+  homeLoader,
+  dashboardLoader,
+} from './loaders';
 
 export const routesConfig = [
   {
@@ -22,7 +28,7 @@ export const routesConfig = [
       {
         path: 'dashboard',
         element: <Dashboard />,
-        // loader: dashboardLoader,
+        loader: dashboardLoader,
         errorElement: <Error />,
       },
       {

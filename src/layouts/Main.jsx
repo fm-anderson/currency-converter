@@ -7,15 +7,6 @@ import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 import ModalConfirm from '../components/modalConfirm';
 
-//utils
-import { fetchData } from '../utils/utils';
-
-//loader
-export function mainLoader() {
-  const userName = fetchData('userName');
-  return { userName };
-}
-
 function Main() {
   const [isLoading, setIsLoading] = useState(false);
   const { userName } = useLoaderData();
