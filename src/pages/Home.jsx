@@ -14,8 +14,16 @@ function Home() {
             <span className="text-[#F7D465]">Prices for Free!</span>
           </h1>
           <p className="py-6 text-center md:text-start">
-            Get accurate currency exchange rates for free. Here you'll always
-            have the most up-to-date information.
+            Get accurate currency exchange rates for free. We tracks foreign
+            exchange references rates published by the{' '}
+            <a
+              className="link link-primary"
+              target="_blank"
+              href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"
+            >
+              European Central Bank
+            </a>
+            .
           </p>
           <LoginForm />
         </div>
