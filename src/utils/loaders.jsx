@@ -15,10 +15,11 @@ export async function homeLoader() {
 }
 
 export async function dashboardLoader() {
+  const userName = fetchData('userName');
   if (!fetchData('userName')) {
     return redirect('/');
   }
-  return null;
+  return { userName };
 }
 
 export async function logoutLoader() {

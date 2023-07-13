@@ -1,10 +1,13 @@
+import { useState } from 'react';
+import { Form } from 'react-router-dom';
 import {
   ArrowLeftOnRectangleIcon,
   UserPlusIcon,
 } from '@heroicons/react/24/solid';
-import { Form } from 'react-router-dom';
 
 function LoginForm() {
+  const [nameInput, setNameInput] = useState('');
+
   return (
     <Form className="grid sm:grid-cols-3 grid-cols-1 gap-3 mt-3" method="post">
       <input
@@ -12,17 +15,22 @@ function LoginForm() {
         type="text"
         name="userName"
         placeholder="What is your name?"
-        minLength="1"
+        minLength="2"
         maxLength="14"
-        required
+        value={nameInput}
+        onChange={(e) => setNameInput(e.target.value)}
       />
-      <button className="btn btn-neutral normal-case" type="submit">
+      <button
+        className="btn btn-neutral normal-case"
+        type="submit"
+        disabled={nameInput.length < 2}
+      >
         Create User
         <span>
           <UserPlusIcon width={20} />
         </span>
       </button>
-      <button className="btn normal-case" type="button">
+      <button className="btn normal-case" type="submit">
         Guest Access
         <span>
           <ArrowLeftOnRectangleIcon width={20} />
