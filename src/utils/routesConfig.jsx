@@ -3,7 +3,7 @@ import Main, { mainLoader } from '../layouts/Main';
 import Error from '../pages/Error';
 import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard';
-import { logoutLoader } from './actions';
+import { homeLoader, loginFormAction, logoutLoader } from './actions';
 
 export const routesConfig = [
   {
@@ -15,7 +15,8 @@ export const routesConfig = [
       {
         path: '/',
         element: <Home />,
-        // loader: homeLoader,
+        loader: homeLoader,
+        action: loginFormAction,
         errorElement: <Error />,
       },
       {
