@@ -8,11 +8,7 @@ function Footer() {
         Copyright © {new Date().getFullYear()} - All right reserved
       </p>
       <div className="grid-flow-col gap-4 justify-self-center md:place-self-center md:justify-self-end">
-        <a
-          href="https://github.com/fm-anderson"
-          target="_blank"
-          className="flex flex-row gap-2"
-        >
+        <a href="https://github.com/fm-anderson" target="_blank">
           <img src={githubLogo} width={32} />
         </a>
         <a href="https://linkedin.com/in/fm-anderson/" target="_blank">

@@ -1,4 +1,3 @@
-//components, loaders, and actions
 import Error from '../pages/Error';
 import Main from '../layouts/Main';
 import Home from '../pages/Home';

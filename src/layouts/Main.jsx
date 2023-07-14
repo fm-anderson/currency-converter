@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 //components
 import Navbar from '../components/Navbar';
@@ -9,11 +9,10 @@ import ModalConfirm from '../components/modalConfirm';
 
 function Main() {
   const [isLoading, setIsLoading] = useState(false);
-  const { userName } = useLoaderData();
 
   return (
     <div>
-      <Navbar userName={userName} />
+      <Navbar />
       <main className="grid justify-items-center place-items-start">
         {isLoading ? <Loading /> : <Outlet />}
       </main>

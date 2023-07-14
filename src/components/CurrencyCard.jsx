@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react';
 import { useLoaderData, useRevalidator } from 'react-router-dom';
 import { HeartIcon } from '@heroicons/react/24/outline';
-import heroImage from '../images/currency-converter.png';
 import { saveFavorite, allowedValue, isGuest } from '../utils/utils';
-import { useEffect, useState } from 'react';
+import heroImage from '../images/currency-converter.png';
 
 function CurrencyCard() {
   const { userName } = useLoaderData();
@@ -63,10 +63,10 @@ function CurrencyCard() {
           )}
         </div>
         <input
+          className="input w-full max-w-xs bg-base-200"
+          placeholder="Enter Amount"
           type="number"
           name="homeValue"
-          placeholder="Enter Amount"
-          className="input w-full max-w-xs bg-base-200"
           onChange={(e) => handleInput(e.target.name, e.target.value)}
           value={home.amount}
         />
@@ -93,10 +93,10 @@ function CurrencyCard() {
           )}
         </div>
         <input
+          className="input w-full max-w-xs bg-base-200"
+          placeholder="Enter Amount"
           type="number"
           name="awayValue"
-          placeholder="Enter Amount"
-          className="input w-full max-w-xs bg-base-200"
           onChange={(e) => handleInput(e.target.name, e.target.value)}
           value={away.amount}
         />

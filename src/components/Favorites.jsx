@@ -1,14 +1,9 @@
 import { useLoaderData } from 'react-router-dom';
 import { TrashIcon } from '@heroicons/react/24/outline';
-import { fetchData, randomKey } from '../utils/utils';
-import { useEffect } from 'react';
+import { randomKey } from '../utils/utils';
 
 function Favorites() {
   const { favorites } = useLoaderData('favorites');
-
-  // useEffect(() => {
-  //   fetcher.load('/');
-  // }, [fetcher]);
 
   return (
     <div className="card w-full bg-neutral-50 shadow-xl">

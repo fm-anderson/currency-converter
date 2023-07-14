@@ -1,5 +1,5 @@
-import { ArrowUturnLeftIcon, HomeIcon } from '@heroicons/react/24/solid';
 import { Link, useNavigate, useRouteError } from 'react-router-dom';
+import { ArrowUturnLeftIcon, HomeIcon } from '@heroicons/react/24/solid';
 
 function Error() {
   const error = useRouteError();

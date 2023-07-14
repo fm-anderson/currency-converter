@@ -1,7 +1,9 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLoaderData } from 'react-router-dom';
 import { CurrencyDollarIcon } from '@heroicons/react/24/solid';
 
-function Navbar({ userName }) {
+function Navbar() {
+  const { userName } = useLoaderData();
+
   return (
     <div className="navbar bg-base-100 mb-2">
       <NavLink to="/" className="flex-1 font-semibold text-sm lg:text-xl">
