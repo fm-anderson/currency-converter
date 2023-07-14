@@ -26,9 +26,6 @@ export const routesConfig = [
         loader: dashboardLoader,
         errorElement: <Error />,
       },
-      {
-        path: 'logout',
-      },
     ],
   },
 ];
