@@ -1,9 +1,16 @@
-import { useLoaderData } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLoaderData, useRevalidator } from 'react-router-dom';
 import { TrashIcon } from '@heroicons/react/24/outline';
-import { randomKey } from '../utils/utils';
+import { deleteFavorite, randomKey } from '../utils/utils';
 
 function Favorites() {
   const { favorites } = useLoaderData('favorites');
+  const [deleted, setDeleted] = useState(false);
+
+  let revalidator = useRevalidator();
+  useEffect(() => {
+    revalidator.revalidate();
+  }, [deleted]);
 
   return (
     <div className="card w-full bg-neutral-50 shadow-xl">
@@ -17,9 +24,20 @@ function Favorites() {
               <button className="btn btn-neutral join-item w-24">{item}</button>
               <button
                 className="btn btn-neutral join-item"
-                onClick={(e) => console.log(e)}
+                onClick={(e) => {
+                  deleteFavorite(e.target?.previousElementSibling?.innerText);
+                  setDeleted(!deleted);
+                }}
               >
-                <TrashIcon width={20} />
+                <TrashIcon
+                  width={20}
+                  onClick={(e) => {
+                    deleteFavorite(
+                      e.target?.parentElement?.previousElementSibling?.innerText
+                    );
+                    setDeleted(!deleted);
+                  }}
+                />
               </button>
             </div>
           ))}

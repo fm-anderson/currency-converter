@@ -34,8 +34,21 @@ export const saveFavorite = (item) => {
   return localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 
+//delete favorite currency from currencies array in local storage
+export const deleteFavorite = (item) => {
+  const favorites = JSON.parse(localStorage.getItem('favorites'));
+  //finds index of currency to be deleted
+  let index = favorites.indexOf(item);
+  //delete currency from array
+  if (index > -1) {
+    favorites.splice(index, 1);
+  }
+  //update favorites on local storage value without deleted currency
+  return localStorage.setItem('favorites', JSON.stringify(favorites));
+};
+
 //generate random string to be used as key
-export function randomKey(length) {
+export const randomKey = (length) => {
   let result = '';
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -46,4 +59,4 @@ export function randomKey(length) {
     counter += 1;
   }
   return result;
-}
+};

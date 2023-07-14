@@ -6,8 +6,8 @@ import heroImage from '../images/currency-converter.png';
 
 function CurrencyCard() {
   const { userName } = useLoaderData();
-  const [home, setHome] = useState({ amount: '', currency: '' });
-  const [away, setAway] = useState({ amount: '', currency: '' });
+  const [home, setHome] = useState({ amount: '', currency: 'USD' });
+  const [away, setAway] = useState({ amount: '', currency: 'EUR' });
   const [liked, setLiked] = useState(false);
 
   const handleInput = (input, value) => {
@@ -79,8 +79,8 @@ function CurrencyCard() {
             name="awayCurrency"
             onChange={(e) => handleInput(e.target.name, e.target.value)}
           >
-            <option>BRL</option>
             <option>EUR</option>
+            <option>BRL</option>
             <option>JPY</option>
           </select>
           {!isGuest(userName) && (
