@@ -21,14 +21,15 @@ export const allowedValue = (value) => {
 //update favorites from local storage
 export const saveFavorite = (item) => {
   const favorites = JSON.parse(localStorage.getItem('favorites'));
-  //max 4 favorites per account
-  if (favorites.length >= 4) {
-    favorites.shift();
-  }
   //check if currency is already a favorite
   if (favorites.includes(item.currency)) {
     return;
   }
+  //max 4 favorites per account
+  if (favorites.length >= 4) {
+    favorites.shift();
+  }
+  //add new currency to favorites
   favorites.push(item.currency);
   return localStorage.setItem('favorites', JSON.stringify(favorites));
 };

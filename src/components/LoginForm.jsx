@@ -32,7 +32,11 @@ function LoginForm() {
           <UserPlusIcon width={20} />
         </span>
       </button>
-      <button className="btn normal-case" type="submit">
+      <button
+        className="btn normal-case"
+        type="submit"
+        disabled={nameInput.length >= 1}
+      >
         Guest Access
         <span>
           <ArrowLeftOnRectangleIcon width={20} />
