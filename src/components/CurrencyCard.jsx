@@ -1,9 +1,9 @@
 import { useLoaderData } from 'react-router-dom';
 import { HeartIcon } from '@heroicons/react/24/outline';
 import heroImage from '../images/currency-converter.png';
-import { isGuest } from '../utils/utils';
+import { addFavorite, isGuest } from '../utils/utils';
 
-function CurrencyCard() {
+function CurrencyCard({ setFavoritesArr }) {
   const { userName } = useLoaderData();
 
   return (
@@ -22,7 +22,7 @@ function CurrencyCard() {
             <option>Greedo</option>
           </select>
           {!isGuest(userName) && (
-            <button className="btn btn-neutral join-item">
+            <button className="btn btn-neutral join-item" onClick={addFavorite}>
               <HeartIcon width={20} />
             </button>
           )}

@@ -1,9 +1,12 @@
 import { redirect } from 'react-router-dom';
-import { deleteItem, fetchData } from './utils';
+import { fetchData } from './utils';
 
-//loader functions
+//loader functions provide data to the route element before it renders.
 export function mainLoader() {
   const userName = fetchData('userName');
+  if (!userName) {
+    redirect('/home');
+  }
   return { userName };
 }
 
@@ -16,13 +19,10 @@ export async function homeLoader() {
 
 export async function dashboardLoader() {
   const userName = fetchData('userName');
+  const favorites = fetchData('favorites');
   if (!fetchData('userName')) {
     return redirect('/');
   }
-  return { userName };
-}
 
-export async function logoutLoader() {
-  deleteItem({ key: 'userName' });
-  return redirect('/');
+  return { userName, favorites };
 }

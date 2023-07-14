@@ -10,12 +10,9 @@ function Navbar({ userName }) {
       </NavLink>
       <div className="flex-none">
         {userName && (
-          <button
-            className="btn normal-case lg:text-lg"
-            onClick={() => window.my_modal_5.showModal()}
-          >
+          <label className="btn normal-case lg:text-lg" htmlFor="modal-confirm">
             Delete User
-          </button>
+          </label>
         )}
       </div>
     </div>

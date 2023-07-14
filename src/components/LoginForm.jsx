@@ -10,6 +10,8 @@ function LoginForm() {
 
   return (
     <Form className="grid sm:grid-cols-3 grid-cols-1 gap-3 mt-3" method="post">
+      {/* submitAction will check hidden field's value */}
+      <input type="hidden" name="_action" value="newUser" />
       <input
         className="input input-bordered w-full placeholder:text-center focus:ring ring-offset-2 ring-[#F7D465]"
         type="text"

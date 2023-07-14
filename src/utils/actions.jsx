@@ -1,21 +1,35 @@
-//action functions
-export async function loginFormAction({ request }) {
+import { redirect } from 'react-router-dom';
+import { deleteItem } from './utils';
+
+//actions are called whenever a Form sends a non-get submission.
+export async function submitAction({ request }) {
   const data = await request.formData();
   const formData = Object.fromEntries(data);
+  const favorites = [];
 
-  if (formData.userName === '') {
-    try {
-      localStorage.setItem('userName', JSON.stringify('Guest User'));
-      return formData;
-    } catch (err) {
-      throw new Error('Please, try again');
+  if (formData._action === 'logout') {
+    deleteItem({ key: 'userName' });
+    deleteItem({ key: 'favorites' });
+    return redirect('/');
+  }
+
+  if (formData._action === 'newUser') {
+    if (formData.userName === '') {
+      try {
+        localStorage.setItem('userName', JSON.stringify('Guest User'));
+        return formData;
+      } catch (err) {
+        throw new Error('Please, try again');
+      }
     }
-  } else {
-    try {
-      localStorage.setItem('userName', JSON.stringify(formData.userName));
-      return formData;
-    } catch (err) {
-      throw new Error('There was a problem creating your account');
+    if (formData.userName) {
+      try {
+        localStorage.setItem('userName', JSON.stringify(formData.userName));
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        return formData;
+      } catch (err) {
+        throw new Error('There was a problem creating your account');
+      }
     }
   }
 }
