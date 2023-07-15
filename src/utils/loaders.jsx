@@ -1,5 +1,6 @@
 import { redirect } from 'react-router-dom';
 import { fetchData } from './utils';
+import { fetchApiData } from './api';
 
 //loader functions provide data to the route element before it renders.
 //https://reactrouter.com/en/main/route/loader

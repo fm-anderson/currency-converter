@@ -1,7 +1,7 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { deleteFavorite, randomKey } from '../utils/utils';
 
-function Favorites({ favorites, clicked, setClicked }) {
+function Favorites({ favorites, clicked, setClicked, setFavSelected }) {
   return (
     <div className="card w-full bg-neutral-50 shadow-xl">
       <div className="card-body">
@@ -11,23 +11,21 @@ function Favorites({ favorites, clicked, setClicked }) {
         <div className="flex flex-wrap justify-center lg:grid lg:grid-flow-col lg:mx-auto lg:gap-4">
           {favorites.map((item) => (
             <div key={randomKey(8)} className="join lg:w-1/4 gap-1 mb-2">
-              <button className="btn btn-neutral join-item w-24">{item}</button>
+              <button
+                className="btn btn-neutral join-item w-24"
+                onClick={(e) => setFavSelected(e.target?.innerText)}
+              >
+                {item}
+              </button>
               <button
                 className="btn btn-neutral join-item"
                 onClick={(e) => {
                   deleteFavorite(e.target?.previousElementSibling?.innerText);
+                  setFavSelected(undefined);
                   setClicked(!clicked);
                 }}
               >
-                <TrashIcon
-                  width={20}
-                  onClick={(e) => {
-                    deleteFavorite(
-                      e.target?.parentElement?.previousElementSibling?.innerText
-                    );
-                    setClicked(!clicked);
-                  }}
-                />
+                <TrashIcon width={20} className="pointer-events-none" />
               </button>
             </div>
           ))}

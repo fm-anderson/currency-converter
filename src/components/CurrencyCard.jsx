@@ -4,7 +4,7 @@ import { HeartIcon } from '@heroicons/react/24/outline';
 import { saveFavorite, allowedValue, isGuest } from '../utils/utils';
 import heroImage from '../images/currency-converter.png';
 
-function CurrencyCard({ clicked, setClicked }) {
+function CurrencyCard({ clicked, setClicked, favSelected }) {
   const { userName } = useLoaderData();
   const [home, setHome] = useState({ amount: '', currency: 'USD' });
   const [away, setAway] = useState({ amount: '', currency: 'EUR' });
@@ -41,11 +41,15 @@ function CurrencyCard({ clicked, setClicked }) {
           <select
             className="select select-bordered w-full max-w-xs join-item"
             name="homeCurrency"
-            onChange={(e) => handleInput(e.target.name, e.target.value)}
+            onChange={(e) => handleInput(e.target?.name, e.target?.value)}
+            value={favSelected}
           >
             <option>USD</option>
             <option>CAD</option>
             <option>BGN</option>
+            <option>EUR</option>
+            <option>BRL</option>
+            <option>JPY</option>
           </select>
           {!isGuest(userName) && (
             <button
@@ -55,7 +59,7 @@ function CurrencyCard({ clicked, setClicked }) {
                 setClicked(!clicked);
               }}
             >
-              <HeartIcon width={20} />
+              <HeartIcon width={20} className="pointer-events-none" />
             </button>
           )}
         </div>
@@ -64,7 +68,7 @@ function CurrencyCard({ clicked, setClicked }) {
           placeholder="Enter Amount"
           type="number"
           name="homeValue"
-          onChange={(e) => handleInput(e.target.name, e.target.value)}
+          onChange={(e) => handleInput(e.target?.name, e.target?.value)}
           value={home.amount}
         />
       </div>
@@ -74,11 +78,14 @@ function CurrencyCard({ clicked, setClicked }) {
           <select
             className="select select-bordered w-full max-w-xs join-item"
             name="awayCurrency"
-            onChange={(e) => handleInput(e.target.name, e.target.value)}
+            onChange={(e) => handleInput(e.target?.name, e.target?.value)}
           >
             <option>EUR</option>
             <option>BRL</option>
             <option>JPY</option>
+            <option>USD</option>
+            <option>CAD</option>
+            <option>BGN</option>
           </select>
           {!isGuest(userName) && (
             <button
@@ -88,7 +95,7 @@ function CurrencyCard({ clicked, setClicked }) {
                 setClicked(!clicked);
               }}
             >
-              <HeartIcon width={20} />
+              <HeartIcon width={20} className="pointer-events-none" />
             </button>
           )}
         </div>
@@ -97,7 +104,7 @@ function CurrencyCard({ clicked, setClicked }) {
           placeholder="Enter Amount"
           type="number"
           name="awayValue"
-          onChange={(e) => handleInput(e.target.name, e.target.value)}
+          onChange={(e) => handleInput(e.target?.name, e.target?.value)}
           value={away.amount}
         />
       </div>

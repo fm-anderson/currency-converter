@@ -8,6 +8,7 @@ import Favorites from '../components/Favorites';
 
 function Dashboard() {
   const [clicked, setClicked] = useState(false);
+  const [favSelected, setFavSelected] = useState(undefined);
   const { userName, favorites } = useLoaderData();
 
   let revalidator = useRevalidator();
@@ -19,12 +20,17 @@ function Dashboard() {
     <div className="hero min-h-screen bg-base-100 max-w-full">
       <div className="hero-content text-center">
         <div>
-          <CurrencyCard clicked={clicked} setClicked={setClicked} />
+          <CurrencyCard
+            clicked={clicked}
+            setClicked={setClicked}
+            favSelected={favSelected}
+          />
           {!isGuest(userName) && (
             <Favorites
               favorites={favorites}
               clicked={clicked}
               setClicked={setClicked}
+              setFavSelected={setFavSelected}
             />
           )}
         </div>
