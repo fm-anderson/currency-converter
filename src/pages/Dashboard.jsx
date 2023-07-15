@@ -23,6 +23,7 @@ function Dashboard() {
           <CurrencyCard
             clicked={clicked}
             setClicked={setClicked}
+            setFavSelected={setFavSelected}
             favSelected={favSelected}
           />
           {!isGuest(userName) && (
