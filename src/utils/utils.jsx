@@ -21,8 +21,13 @@ export const allowedValue = (value) => {
 //update favorites from local storage
 export const saveFavorite = (item) => {
   const favorites = JSON.parse(localStorage.getItem('favorites'));
-  //check if currency is already a favorite
-  if (favorites.includes(item.currency)) {
+  if (
+    //check if currency is already a favorite
+    favorites.includes(item.currency) ||
+    //the next two lines will check if currency was not selected
+    item.currency === '' ||
+    item.currency === 'Choose Currency'
+  ) {
     return;
   }
   //max 4 favorites per account
