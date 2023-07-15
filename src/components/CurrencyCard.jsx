@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useLoaderData, useRevalidator } from 'react-router-dom';
+import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { HeartIcon } from '@heroicons/react/24/outline';
 import { saveFavorite, allowedValue, isGuest } from '../utils/utils';
 import heroImage from '../images/currency-converter.png';
 
-function CurrencyCard() {
+function CurrencyCard({ clicked, setClicked }) {
   const { userName } = useLoaderData();
   const [home, setHome] = useState({ amount: '', currency: 'USD' });
   const [away, setAway] = useState({ amount: '', currency: 'EUR' });
-  const [liked, setLiked] = useState(false);
 
   const handleInput = (input, value) => {
     switch (input) {
@@ -31,11 +30,6 @@ function CurrencyCard() {
     }
   };
 
-  let revalidator = useRevalidator();
-  useEffect(() => {
-    revalidator.revalidate();
-  }, [liked]);
-
   return (
     <div className="card lg:card-side bg-neutral-50 shadow-xl mb-8">
       <figure className="max-w-xs">
@@ -56,9 +50,12 @@ function CurrencyCard() {
           {!isGuest(userName) && (
             <button
               className="btn btn-neutral join-item"
-              onClick={() => saveFavorite(home)}
+              onClick={() => {
+                saveFavorite(home);
+                setClicked(!clicked);
+              }}
             >
-              <HeartIcon width={20} onClick={() => setLiked(!liked)} />
+              <HeartIcon width={20} />
             </button>
           )}
         </div>
@@ -86,9 +83,12 @@ function CurrencyCard() {
           {!isGuest(userName) && (
             <button
               className="btn btn-neutral join-item"
-              onClick={() => saveFavorite(away)}
+              onClick={() => {
+                saveFavorite(away);
+                setClicked(!clicked);
+              }}
             >
-              <HeartIcon width={20} onClick={() => setLiked(!liked)} />
+              <HeartIcon width={20} />
             </button>
           )}
         </div>
