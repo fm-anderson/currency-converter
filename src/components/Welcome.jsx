@@ -14,7 +14,7 @@ function Welcome({
 
   return (
     <>
-      <h2 className="card-title text-4xl mb-4">Welcome {userName}!</h2>
+      <h2 className="card-title text-4xl mb-4">Welcome, {userName}!</h2>
       <div className="card w-full bg-neutral-50 shadow-xl mb-8">
         <div className="card-body">
           <div className="justify-center">

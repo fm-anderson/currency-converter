@@ -23,7 +23,9 @@ function Favorites({
     <div className="card w-full bg-neutral-50 shadow-xl">
       <div className="card-body">
         <h2 className="card-title place-content-center text-2xl mb-4">
-          {favorites.length >= 1 ? 'Favorites' : 'Save Your Favorites'}
+          {favorites.length >= 1
+            ? 'Favorites'
+            : 'Save Your Favorite Currencies'}
         </h2>
         <div className="flex flex-wrap justify-center lg:grid lg:grid-flow-col lg:mx-auto lg:gap-4">
           {favorites.map((item) => (
