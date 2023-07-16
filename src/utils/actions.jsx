@@ -1,5 +1,5 @@
 import { redirect } from 'react-router-dom';
-import { deleteItem } from './utils';
+import { deleteItem, fakeRequest } from './utils';
 
 //actions are called whenever a Form sends a non-get submission.
 //https://reactrouter.com/en/main/route/action
@@ -25,6 +25,7 @@ export async function submitAction({ request }) {
       }
     }
     if (formData.userName) {
+      await fakeRequest();
       try {
         localStorage.setItem('userName', JSON.stringify(formData.userName));
         localStorage.setItem('favorites', JSON.stringify(favorites));

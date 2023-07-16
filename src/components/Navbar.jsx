@@ -13,7 +13,7 @@ function Navbar() {
       <div className="flex-none">
         {userName && (
           <label className="btn normal-case lg:text-lg" htmlFor="modal-confirm">
-            Delete User
+            {userName === 'Guest User' ? 'Logout' : 'Delete User'}
           </label>
         )}
       </div>

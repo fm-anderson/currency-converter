@@ -1,3 +1,6 @@
+export const fakeRequest = () =>
+  new Promise((res) => setTimeout(res, Math.random() * 1800));
+
 // check and return local storage item by key
 export const fetchData = (key) => {
   return JSON.parse(localStorage.getItem(key));

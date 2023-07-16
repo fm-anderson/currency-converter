@@ -9,7 +9,9 @@ export function mainLoader() {
   const userName = fetchData('userName');
   const favorites = fetchData('favorites');
   if (!userName) {
-    redirect('/home');
+    redirect('/');
+  } else {
+    redirect('/dashboard');
   }
   return { userName, favorites };
 }
