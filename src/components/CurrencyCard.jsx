@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { convertCurrency } from '../utils/utils';
+import { allowedValue, convertCurrency } from '../utils/utils';
 import { fetchRates } from '../utils/api';
 import heroImage from '../images/currency-converter.png';
 
@@ -52,14 +52,21 @@ function CurrencyCard({
   const handleInput = (input, value) => {
     switch (input) {
       case 'homeValue':
-        const awayConverted = convertCurrency(value, rates[away.currency]);
-        setHome((prevState) => ({ ...prevState, amount: value }));
-        setAway((prevState) => ({ ...prevState, amount: awayConverted }));
+        if (allowedValue(value)) {
+          const awayConverted = convertCurrency(value, rates[away.currency]);
+          setHome((prevState) => ({ ...prevState, amount: value }));
+          setAway((prevState) => ({ ...prevState, amount: awayConverted }));
+        }
         break;
       case 'awayValue':
-        const homeConverted = convertCurrency(value, 1 / rates[away.currency]);
-        setAway((prevState) => ({ ...prevState, amount: value }));
-        setHome((prevState) => ({ ...prevState, amount: homeConverted }));
+        if (allowedValue(value)) {
+          const homeConverted = convertCurrency(
+            value,
+            1 / rates[away.currency]
+          );
+          setAway((prevState) => ({ ...prevState, amount: value }));
+          setHome((prevState) => ({ ...prevState, amount: homeConverted }));
+        }
         break;
       case 'homeCurrency':
         setHome((prevState) => ({ ...prevState, currency: value }));
