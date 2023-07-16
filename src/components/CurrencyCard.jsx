@@ -12,18 +12,25 @@ function CurrencyCard({ clicked, setClicked, favSelected, setFavSelected }) {
   const [away, setAway] = useState({ amount: '', currency: '' });
   const [rates, setRates] = useState({});
 
-  const handleHomeChange = async () => {
-    const ratesFetched = await fetchRates(home.currency);
-    setRates(ratesFetched.rates);
-    console.log(rates);
+  const handleHomeChange = async (favorite) => {
+    if (favorite) {
+      const ratesFetched = await fetchRates(favorite);
+      setRates(ratesFetched.rates);
+    } else {
+      const ratesFetched = await fetchRates(home.currency);
+      setRates(ratesFetched.rates);
+    }
   };
 
   useEffect(() => {
     if (home.currency === '' || home.currency === 'Choose Currency') {
       return;
+    } else if (favSelected) {
+      handleHomeChange(favSelected);
+    } else {
+      handleHomeChange();
     }
-    handleHomeChange();
-  }, [home.currency]);
+  }, [home.currency, favSelected]);
 
   const handleInput = (input, value) => {
     switch (input) {
