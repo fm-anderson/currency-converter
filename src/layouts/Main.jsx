@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 //components
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import ModalConfirm from '../components/modalConfirm';
+import ModalConfirm from '../components/ModalConfirm';
 
 function Main() {
   return (
