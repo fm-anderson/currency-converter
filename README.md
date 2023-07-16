@@ -1,6 +1,6 @@
 # Currency Converter
 
-![Currency Converter](./src/images/screenshots/dashboard.png)
+<img src="./src/images/screenshots/dashboard.png" width="600"/>
 
 ## About The Project
 
@@ -52,3 +52,34 @@ This project was bootstrapped with [Vite](https://github.com/vitejs/vite). Ensur
 
 [VAT comply](https://vatcomply.com/)
 VAT comply provides the exchange rates and the geolocation for Currency Converter.
+
+## Screenshots (Desktop)
+
+**Home:** Home page is shown to users that are not logged in.
+<img src="./src/images/screenshots/home.png" width="600"/>
+
+---
+
+**Dashboard:** Complete dashboard is available for users that created an account.
+<img src="./src/images/screenshots/dashboard.png" width="600"/>
+
+---
+
+**Guest Access:** Basic dashboard without local currency or favorites.
+<img src="./src/images/screenshots/guest.png" width="600"/>
+
+---
+
+## Screenshots (Mobile)
+
+<img src="./src/images/screenshots/m-home.png" width="200"/>
+
+---
+
+<img src="./src/images/screenshots/m-dashboard.png" width="200"/>
+
+---
+
+<img src="./src/images/screenshots/m-guest.png" width="200"/>
+
+---
