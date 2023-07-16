@@ -14,6 +14,7 @@ function CurrencyCard({
   favSelected,
   setFavSelected,
   localCurrency,
+  setLocalCurrency,
 }) {
   const [home, setHome] = useState({ amount: '', currency: '' });
   const [away, setAway] = useState({ amount: '', currency: '' });
@@ -63,10 +64,12 @@ function CurrencyCard({
       case 'homeCurrency':
         setHome((prevState) => ({ ...prevState, currency: value }));
         setFavSelected(undefined);
+        setLocalCurrency(undefined);
         break;
       case 'awayCurrency':
         setAway((prevState) => ({ ...prevState, currency: value }));
         setFavSelected(undefined);
+        setLocalCurrency(undefined);
         break;
     }
   };

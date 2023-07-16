@@ -37,6 +37,7 @@ function Dashboard() {
             setClicked={setClicked}
             setFavSelected={setFavSelected}
             favSelected={favSelected}
+            setLocalCurrency={setLocalCurrency}
             localCurrency={localCurrency}
           />
           {!isGuest(userName) && (
