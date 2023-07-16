@@ -65,3 +65,18 @@ export const randomKey = (length) => {
   }
   return result;
 };
+
+//converts input values
+export const convertCurrency = (amount, rate) => {
+  //check if rate was successfully fetched before performing the conversion
+  if (!rate) {
+    return 0;
+  }
+  //converts the string passed by the user to a number
+  const numAmount = Number(amount);
+  if (isNaN(numAmount)) {
+    return 0;
+  }
+  //returns the converted amount based on the rate fetched
+  return (numAmount * rate).toFixed(2);
+};

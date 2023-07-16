@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { allowedValue } from '../utils/utils';
+import { useEffect, useState } from 'react';
+import { convertCurrency } from '../utils/utils';
+import { fetchRates } from '../utils/api';
 import heroImage from '../images/currency-converter.png';
 
 //components
@@ -9,18 +10,32 @@ import AwayPicker from './AwayPicker';
 function CurrencyCard({ clicked, setClicked, favSelected, setFavSelected }) {
   const [home, setHome] = useState({ amount: '', currency: '' });
   const [away, setAway] = useState({ amount: '', currency: '' });
+  const [rates, setRates] = useState({});
+
+  const handleHomeChange = async () => {
+    const ratesFetched = await fetchRates(home.currency);
+    setRates(ratesFetched.rates);
+    console.log(rates);
+  };
+
+  useEffect(() => {
+    if (home.currency === '' || home.currency === 'Choose Currency') {
+      return;
+    }
+    handleHomeChange();
+  }, [home.currency]);
 
   const handleInput = (input, value) => {
     switch (input) {
       case 'homeValue':
-        if (allowedValue(value)) {
-          setHome((prevState) => ({ ...prevState, amount: value }));
-        }
+        const awayConverted = convertCurrency(value, rates[away.currency]);
+        setHome((prevState) => ({ ...prevState, amount: value }));
+        setAway((prevState) => ({ ...prevState, amount: awayConverted }));
         break;
       case 'awayValue':
-        if (allowedValue(value)) {
-          setAway((prevState) => ({ ...prevState, amount: value }));
-        }
+        const homeConverted = convertCurrency(value, 1 / rates[away.currency]);
+        setAway((prevState) => ({ ...prevState, amount: value }));
+        setHome((prevState) => ({ ...prevState, amount: homeConverted }));
         break;
       case 'homeCurrency':
         setHome((prevState) => ({ ...prevState, currency: value }));
