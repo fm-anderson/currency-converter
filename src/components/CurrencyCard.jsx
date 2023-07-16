@@ -7,33 +7,45 @@ import heroImage from '../images/currency-converter.png';
 import HomePicker from './HomePicker';
 import AwayPicker from './AwayPicker';
 
-function CurrencyCard({ clicked, setClicked, favSelected, setFavSelected }) {
+function CurrencyCard({
+  clicked,
+  setClicked,
+  favSelected,
+  setFavSelected,
+  localCurrency,
+}) {
   const [home, setHome] = useState({ amount: '', currency: '' });
   const [away, setAway] = useState({ amount: '', currency: '' });
   const [rates, setRates] = useState({});
 
-  const handleHomeChange = async (favorite) => {
-    if (favorite) {
-      setHome((prevState) => ({ ...prevState, currency: favorite }));
+  const handleHomeChange = async (value) => {
+    if (value) {
+      setHome((prevState) => ({ ...prevState, currency: value }));
+      const ratesFetched = await fetchRates(value);
+      setRates(ratesFetched.rates);
+    } else if (home.currency && home.currency !== 'Choose Currency') {
+      const ratesFetched = await fetchRates(home.currency);
+      setRates(ratesFetched.rates);
     }
-    const ratesFetched = await fetchRates(home.currency);
-    setRates(ratesFetched.rates);
   };
 
   useEffect(() => {
-    if (home.currency === '' || home.currency === 'Choose Currency') {
-      return;
-    } else if (favSelected) {
-      handleHomeChange(favSelected);
-    } else {
+    if (favSelected || localCurrency) {
+      if (favSelected) {
+        handleHomeChange(favSelected);
+      } else {
+        handleHomeChange(localCurrency);
+      }
+    }
+    if (home.currency !== '' && home.currency !== 'Choose Currency') {
       handleHomeChange();
     }
-  }, [home.currency, favSelected]);
+  }, [home.currency, favSelected, clicked, localCurrency]);
 
   useEffect(() => {
     setHome((prevState) => ({ ...prevState, amount: '' }));
     setAway((prevState) => ({ ...prevState, amount: '' }));
-  }, [rates]);
+  }, [rates, away.currency]);
 
   const handleInput = (input, value) => {
     switch (input) {

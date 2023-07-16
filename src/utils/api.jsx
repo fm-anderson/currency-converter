@@ -19,3 +19,13 @@ export const fetchRates = async (base) => {
     console.log(err);
   }
 };
+
+export const fetchLocation = async () => {
+  try {
+    const response = await fetch(`${baseUrl}/geolocate`);
+    let data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};

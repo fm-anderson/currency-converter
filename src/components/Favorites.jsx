@@ -1,7 +1,13 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { deleteFavorite, randomKey } from '../utils/utils';
 
-function Favorites({ favorites, clicked, setClicked, setFavSelected }) {
+function Favorites({
+  favorites,
+  clicked,
+  setClicked,
+  setFavSelected,
+  setLocalCurrency,
+}) {
   const handleDeleteFavorite = (e) => {
     deleteFavorite(e.target?.previousElementSibling?.innerText);
     setFavSelected(undefined);
@@ -9,6 +15,7 @@ function Favorites({ favorites, clicked, setClicked, setFavSelected }) {
   };
 
   const handleFavoriteSelect = (e) => {
+    setLocalCurrency(undefined);
     setFavSelected(e.target?.innerText);
   };
 

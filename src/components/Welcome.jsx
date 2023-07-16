@@ -1,4 +1,17 @@
-function Welcome({ userName }) {
+function Welcome({
+  userName,
+  location,
+  setLocalCurrency,
+  clicked,
+  setClicked,
+  setFavSelected,
+}) {
+  const handleLocalCurrencyClick = () => {
+    setLocalCurrency(location?.currency);
+    setFavSelected(undefined);
+    setClicked(!clicked);
+  };
+
   return (
     <>
       <h2 className="card-title text-4xl mb-4">Welcome {userName}!</h2>
@@ -6,13 +19,14 @@ function Welcome({ userName }) {
         <div className="card-body">
           <div className="justify-center">
             <p className="font-normal text-md mb-4">
-              Click the button below to use your local currency.
+              Click the button below to use your local currency.{' '}
+              {location?.emoji}
             </p>
             <button
-              className="btn btn-neutral join-item w-24"
-              // onClick={(e) => handleFavoriteSelect(e)}
+              className="btn btn-neutral join-item w-32"
+              onClick={handleLocalCurrencyClick}
             >
-              USD
+              {location?.currency}
             </button>
           </div>
         </div>

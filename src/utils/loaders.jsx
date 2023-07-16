@@ -1,6 +1,6 @@
 import { redirect } from 'react-router-dom';
 import { fetchData } from './utils';
-import { fetchCurrencies } from './api';
+import { fetchCurrencies, fetchLocation } from './api';
 
 //loader functions provide data to the route element before it renders.
 //https://reactrouter.com/en/main/route/loader
@@ -22,12 +22,13 @@ export async function homeLoader() {
 }
 
 export async function dashboardLoader() {
-  const userName = fetchData('userName');
-  const favorites = fetchData('favorites');
-  const currencies = await fetchCurrencies();
   if (!fetchData('userName')) {
     return redirect('/');
   }
+  const userName = fetchData('userName');
+  const favorites = fetchData('favorites');
+  const currencies = await fetchCurrencies();
+  const location = await fetchLocation();
 
-  return { userName, favorites, currencies };
+  return { userName, favorites, currencies, location };
 }
