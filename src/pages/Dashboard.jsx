@@ -22,14 +22,16 @@ function Dashboard() {
     <div className="hero min-h-screen bg-base-100 max-w-full">
       <div className="hero-content text-center">
         <div>
-          <Welcome
-            userName={userName}
-            location={location}
-            setLocalCurrency={setLocalCurrency}
-            clicked={clicked}
-            setClicked={setClicked}
-            setFavSelected={setFavSelected}
-          />
+          {!isGuest(userName) && (
+            <Welcome
+              userName={userName}
+              location={location}
+              setLocalCurrency={setLocalCurrency}
+              clicked={clicked}
+              setClicked={setClicked}
+              setFavSelected={setFavSelected}
+            />
+          )}
           <CurrencyCard
             clicked={clicked}
             setClicked={setClicked}

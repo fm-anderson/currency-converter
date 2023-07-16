@@ -6,6 +6,7 @@ import heroImage from '../images/currency-converter.png';
 //components
 import HomePicker from './HomePicker';
 import AwayPicker from './AwayPicker';
+import Arrows from './Arrows';
 
 function CurrencyCard({
   clicked,
@@ -83,6 +84,8 @@ function CurrencyCard({
         clicked={clicked}
         setClicked={setClicked}
       />
+
+      <Arrows />
 
       <AwayPicker
         favSelected={favSelected}
