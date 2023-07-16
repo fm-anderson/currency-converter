@@ -14,7 +14,7 @@ A currency converter developed in React. The application fetches real-time curre
 - Geolocation based on IP address
 - Works with all major global currencies
 
-**Try it →** https://fm-anderson.github.io/currency-converter/
+**Try it →** https://fm-anderson-currency-converter.netlify.app/
 
 ## Getting Started
 
