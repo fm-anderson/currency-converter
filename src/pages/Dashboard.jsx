@@ -5,6 +5,7 @@ import { isGuest } from '../utils/utils';
 //components
 import CurrencyCard from '../components/CurrencyCard';
 import Favorites from '../components/Favorites';
+import Welcome from '../components/Welcome';
 
 function Dashboard() {
   const [clicked, setClicked] = useState(false);
@@ -20,6 +21,7 @@ function Dashboard() {
     <div className="hero min-h-screen bg-base-100 max-w-full">
       <div className="hero-content text-center">
         <div>
+          <Welcome userName={userName} setFavSelected={setFavSelected} />
           <CurrencyCard
             clicked={clicked}
             setClicked={setClicked}
