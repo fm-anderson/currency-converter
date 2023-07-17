@@ -29,7 +29,7 @@ function Favorites({
         </h2>
         <div className="flex flex-wrap justify-center lg:grid lg:grid-flow-col lg:mx-auto lg:gap-4">
           {favorites.map((item) => (
-            <div key={randomKey(8)} className="join lg:w-1/4 gap-1 mb-2">
+            <div key={randomKey(8)} className="join lg:w-1/4 gap-1 mx-3 mb-2">
               <button
                 className="btn btn-neutral join-item w-24"
                 onClick={(e) => handleFavoriteSelect(e)}
