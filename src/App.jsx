@@ -1,7 +1,12 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { routesConfig } from './utils/routesConfig';
+
+const router = createBrowserRouter(routesConfig);
+
 function App() {
   return (
-    <div>
-      <h1 className="text-4xl font-bold">Hello world!</h1>
+    <div className="grid container h-screen bg-base-100">
+      <RouterProvider router={router} />
     </div>
   );
 }
