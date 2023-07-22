@@ -51,7 +51,7 @@ This project was bootstrapped with [Vite](https://github.com/vitejs/vite). Ensur
 ## API
 
 [VAT comply](https://vatcomply.com/)
-VAT comply provides the exchange rates and the geolocation for Currency Converter.
+provides the exchange rates and the geolocation for Currency Converter.
 
 ## Screenshots (Desktop)
 
