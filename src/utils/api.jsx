@@ -1,4 +1,4 @@
-const baseUrl = 'https://api.vatcomply.com';
+const baseUrl = "https://api.vatcomply.com";
 
 export const fetchCurrencies = async () => {
   try {

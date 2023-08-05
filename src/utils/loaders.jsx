@@ -1,34 +1,31 @@
-import { redirect } from 'react-router-dom';
-import { fetchData } from './utils';
-import { fetchCurrencies, fetchLocation } from './api';
-
-//loader functions provide data to the route element before it renders.
-//https://reactrouter.com/en/main/route/loader
+import { redirect } from "react-router-dom";
+import { fetchData } from "./utils";
+import { fetchCurrencies, fetchLocation } from "./api";
 
 export function mainLoader() {
-  const userName = fetchData('userName');
-  const favorites = fetchData('favorites');
+  const userName = fetchData("userName");
+  const favorites = fetchData("favorites");
   if (!userName) {
-    redirect('/');
+    redirect("/");
   } else {
-    redirect('/dashboard');
+    redirect("/dashboard");
   }
   return { userName, favorites };
 }
 
 export async function homeLoader() {
-  if (fetchData('userName')) {
-    return redirect('/dashboard');
+  if (fetchData("userName")) {
+    return redirect("/dashboard");
   }
   return null;
 }
 
 export async function dashboardLoader() {
-  if (!fetchData('userName')) {
-    return redirect('/');
+  if (!fetchData("userName")) {
+    return redirect("/");
   }
-  const userName = fetchData('userName');
-  const favorites = fetchData('favorites');
+  const userName = fetchData("userName");
+  const favorites = fetchData("favorites");
   const currencies = await fetchCurrencies();
   const location = await fetchLocation();
 

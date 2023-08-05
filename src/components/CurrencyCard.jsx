@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { allowedValue, convertCurrency } from '../utils/utils';
-import { fetchRates } from '../utils/api';
-import heroImage from '../images/currency-converter.png';
+import { useEffect, useState } from "react";
+import { allowedValue, convertCurrency } from "../utils/utils";
+import { fetchRates } from "../utils/api";
+import heroImage from "../images/currency-converter.png";
 
 //components
-import HomePicker from './HomePicker';
-import AwayPicker from './AwayPicker';
-import Arrows from './Arrows';
+import HomePicker from "./HomePicker";
+import AwayPicker from "./AwayPicker";
+import Arrows from "./Arrows";
 
 function CurrencyCard({
   clicked,
@@ -16,8 +16,8 @@ function CurrencyCard({
   localCurrency,
   setLocalCurrency,
 }) {
-  const [home, setHome] = useState({ amount: '', currency: '' });
-  const [away, setAway] = useState({ amount: '', currency: '' });
+  const [home, setHome] = useState({ amount: "", currency: "" });
+  const [away, setAway] = useState({ amount: "", currency: "" });
   const [rates, setRates] = useState({});
 
   const handleHomeChange = async (value) => {
@@ -25,7 +25,7 @@ function CurrencyCard({
       setHome((prevState) => ({ ...prevState, currency: value }));
       const ratesFetched = await fetchRates(value);
       setRates(ratesFetched.rates);
-    } else if (home.currency && home.currency !== 'Choose Currency') {
+    } else if (home.currency && home.currency !== "Choose Currency") {
       const ratesFetched = await fetchRates(home.currency);
       setRates(ratesFetched.rates);
     }
@@ -39,26 +39,26 @@ function CurrencyCard({
         handleHomeChange(localCurrency);
       }
     }
-    if (home.currency !== '' && home.currency !== 'Choose Currency') {
+    if (home.currency !== "" && home.currency !== "Choose Currency") {
       handleHomeChange();
     }
   }, [home.currency, favSelected, clicked, localCurrency]);
 
   useEffect(() => {
-    setHome((prevState) => ({ ...prevState, amount: '' }));
-    setAway((prevState) => ({ ...prevState, amount: '' }));
+    setHome((prevState) => ({ ...prevState, amount: "" }));
+    setAway((prevState) => ({ ...prevState, amount: "" }));
   }, [rates, away.currency]);
 
   const handleInput = (input, value) => {
     switch (input) {
-      case 'homeValue':
+      case "homeValue":
         if (allowedValue(value)) {
           const awayConverted = convertCurrency(value, rates[away.currency]);
           setHome((prevState) => ({ ...prevState, amount: value }));
           setAway((prevState) => ({ ...prevState, amount: awayConverted }));
         }
         break;
-      case 'awayValue':
+      case "awayValue":
         if (allowedValue(value)) {
           const homeConverted = convertCurrency(
             value,
@@ -68,12 +68,12 @@ function CurrencyCard({
           setHome((prevState) => ({ ...prevState, amount: homeConverted }));
         }
         break;
-      case 'homeCurrency':
+      case "homeCurrency":
         setHome((prevState) => ({ ...prevState, currency: value }));
         setFavSelected(undefined);
         setLocalCurrency(undefined);
         break;
-      case 'awayCurrency':
+      case "awayCurrency":
         setAway((prevState) => ({ ...prevState, currency: value }));
         setFavSelected(undefined);
         setLocalCurrency(undefined);
@@ -83,8 +83,8 @@ function CurrencyCard({
 
   return (
     <div className="card lg:card-side bg-neutral-50 shadow-xl mb-8">
-      <figure className="max-w-xs">
-        <img src={heroImage} />
+      <figure className="max-w-xs mx-auto">
+        <img src={heroImage} alt="Different currencies symbols with arrows" />
       </figure>
 
       <HomePicker
